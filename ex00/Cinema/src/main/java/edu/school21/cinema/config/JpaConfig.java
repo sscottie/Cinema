@@ -5,7 +5,12 @@ import com.zaxxer.hikari.HikariDataSource;
 import edu.school21.cinema.util.PropertiesUtil;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.jdbc.datasource.init.DatabasePopulator;
+import org.springframework.jdbc.datasource.init.DatabasePopulatorUtils;
+import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
@@ -26,6 +31,13 @@ public class JpaConfig {
 		config.setUsername(PropertiesUtil.getProperty("dataSource.user"));
 		config.setPassword(PropertiesUtil.getProperty("dataSource.password"));
 		config.setMaximumPoolSize(Integer.parseInt(PropertiesUtil.getProperty("maximumPoolSize")));
+
+		HikariDataSource dataSource = new HikariDataSource(config);
+
+		Resource initSchema = new ClassPathResource("sql/schema.sql");
+		Resource initData = new ClassPathResource("sql/data.sql");
+		DatabasePopulator databasePopulator = new ResourceDatabasePopulator(initSchema, initData);
+		DatabasePopulatorUtils.execute(databasePopulator, dataSource);
 
 		return new HikariDataSource(config);
 	}
