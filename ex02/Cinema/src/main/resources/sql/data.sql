@@ -11,13 +11,13 @@ INSERT INTO public.film_session (uuid, sessiondatetimefrom, sessiondatetimeto, t
 INSERT INTO public.film_session (uuid, sessiondatetimefrom, sessiondatetimeto, ticketcost, film_id, hall_id) VALUES ('fb39b4fc-3451-4c40-8abd-d065a63d07e3', '2022-06-06 20:10:00.000000', '2022-06-07 00:05:00.000000', 600, 2, 1) ON CONFLICT DO NOTHING;
 INSERT INTO public.film_session (uuid, sessiondatetimefrom, sessiondatetimeto, ticketcost, film_id, hall_id) VALUES ('5abbb2ef-e202-4a31-9272-f36f7abc90e5', '2022-06-06 12:20:00.000000', '2022-06-06 15:02:00.000000', 250, 3, 2) ON CONFLICT DO NOTHING;
 
-INSERT INTO public.user_account (id, uuid) VALUES (1, '740c5a73-4b48-40e0-bfe2-61db1995a17a');
-INSERT INTO public.user_account (id, uuid) VALUES (2, '8fdc20e1-8b9c-451b-a4f6-104a13ce1f1b');
-INSERT INTO public.user_account (id, uuid) VALUES (3, '45950887-c019-44f3-8724-ed176cd03cd9');
+INSERT INTO public.user_account (id, uuid) VALUES (1, '740c5a73-4b48-40e0-bfe2-61db1995a17a') ON CONFLICT DO NOTHING;
+INSERT INTO public.user_account (id, uuid) VALUES (2, '8fdc20e1-8b9c-451b-a4f6-104a13ce1f1b') ON CONFLICT DO NOTHING;
+INSERT INTO public.user_account (id, uuid) VALUES (3, '45950887-c019-44f3-8724-ed176cd03cd9') ON CONFLICT DO NOTHING;
 
-INSERT INTO public.message (id, uuid, datetimecreate, text, author_user_id, film_id) VALUES (1, 'e0ee6e5c-a845-4a2c-880d-d8d5a5ef27b3', '2022-06-05 22:20:39.169000', 'Hello Everybody here! ', 1, 2);
-INSERT INTO public.message (id, uuid, datetimecreate, text, author_user_id, film_id) VALUES (2, '3e51bfd3-72e6-40b6-9b25-d7b72b26919f', '2022-06-05 22:21:25.305000', 'Here we discuss The Godfather movie. Is there any suggestions?', 1, 2);
-INSERT INTO public.message (id, uuid, datetimecreate, text, author_user_id, film_id) VALUES (3, 'b789656f-f1d9-47c3-8d51-94954c1178c9', '2022-06-05 22:22:21.923000', 'Great! I was trying to see it on big screen since childhood! ', 2, 2);
-INSERT INTO public.message (id, uuid, datetimecreate, text, author_user_id, film_id) VALUES (4, 'a2b60cfb-1869-44f6-9b3a-af74770464bf', '2022-06-05 22:23:03.504000', 'where I can timetable for this film?', 2, 2);
-INSERT INTO public.message (id, uuid, datetimecreate, text, author_user_id, film_id) VALUES (5, 'f8c606a8-006c-45fe-98d6-28c000499381', '2022-06-05 22:24:08.909000', 'Dude, u can check it on sessions page', 3, 2);
-INSERT INTO public.message (id, uuid, datetimecreate, text, author_user_id, film_id) VALUES (6, 'fa311a50-1c81-4988-9d28-53368b81647c', '2022-06-05 22:24:21.728000', 'Thank you!', 2, 2);
+INSERT INTO public.message (id, uuid, datetimecreate, text, author_user_id, film_id) VALUES (1, 'e0ee6e5c-a845-4a2c-880d-d8d5a5ef27b3', '2022-06-05 22:20:39.169000', 'Hello Everybody here! ', 1, 2) ON CONFLICT DO NOTHING;
+INSERT INTO public.message (id, uuid, datetimecreate, text, author_user_id, film_id) VALUES (2, '3e51bfd3-72e6-40b6-9b25-d7b72b26919f', '2022-06-05 22:21:25.305000', 'Here we discuss The Godfather movie. Is there any suggestions?', 1, 2) ON CONFLICT DO NOTHING;
+INSERT INTO public.message (id, uuid, datetimecreate, text, author_user_id, film_id) VALUES (3, 'b789656f-f1d9-47c3-8d51-94954c1178c9', '2022-06-05 22:22:21.923000', 'Great! I was trying to see it on big screen since childhood! ', 2, 2) ON CONFLICT DO NOTHING;
+INSERT INTO public.message (id, uuid, datetimecreate, text, author_user_id, film_id) VALUES (4, 'a2b60cfb-1869-44f6-9b3a-af74770464bf', '2022-06-05 22:23:03.504000', 'where I can timetable for this film?', 2, 2) ON CONFLICT DO NOTHING;
+INSERT INTO public.message (id, uuid, datetimecreate, text, author_user_id, film_id) VALUES (5, 'f8c606a8-006c-45fe-98d6-28c000499381', '2022-06-05 22:24:08.909000', 'Dude, u can check it on sessions page', 3, 2) ON CONFLICT DO NOTHING;
+INSERT INTO public.message (id, uuid, datetimecreate, text, author_user_id, film_id) VALUES (6, 'fa311a50-1c81-4988-9d28-53368b81647c', '2022-06-05 22:24:21.728000', 'Thank you!', 2, 2) ON CONFLICT DO NOTHING;
