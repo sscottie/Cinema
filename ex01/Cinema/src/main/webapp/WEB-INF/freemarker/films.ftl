@@ -184,7 +184,13 @@
                                        value="Submit">
                             </form>
                         </td>
-                        <td>${film.description}</td>
+                        <td>
+                            <#if film.description?has_content>
+                                ${film.description}
+                            <#else>
+                                -
+                            </#if>
+                        </td>
                         <td>${film.duration}</td>
                         <td>${film.yearOfRelease}</td>
                         <td>${film.ageRestrictions}+</td>

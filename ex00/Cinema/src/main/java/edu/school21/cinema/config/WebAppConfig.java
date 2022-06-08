@@ -1,5 +1,8 @@
 package edu.school21.cinema.config;
 
+import no.api.freemarker.java8.Java8ObjectWrapper;
+import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -44,5 +47,19 @@ public class WebAppConfig implements WebMvcConfigurer {
 		CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
 		multipartResolver.setMaxUploadSize(1000000);
 		return multipartResolver;
+	}
+
+	@Configuration
+	public static class FreeMarkerObjectWrapperConfig implements BeanPostProcessor {
+
+		@Override
+		public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
+			if (bean instanceof FreeMarkerConfigurer) {
+				FreeMarkerConfigurer configurer = (FreeMarkerConfigurer) bean;
+				configurer.getConfiguration().setObjectWrapper(new Java8ObjectWrapper(freemarker.template.Configuration.getVersion()));
+			}
+
+			return bean;
+		}
 	}
 }

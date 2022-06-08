@@ -15,7 +15,7 @@
 </head>
 <style>
     body {
-        height: 100vh;
+        height: 100%;
         font-family: Verdana, sans-serif;
         margin: 0;
     }
@@ -185,7 +185,13 @@
                                        value="Submit">
                             </form>
                         </td>
-                        <td>${film.description}</td>
+                        <td>
+                            <#if film.description?has_content>
+                                ${film.description}
+                            <#else>
+                                -
+                            </#if>
+                        </td>
                         <td>${film.duration}</td>
                         <td>${film.yearOfRelease}</td>
                         <td>${film.ageRestrictions}+</td>

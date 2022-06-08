@@ -51,6 +51,7 @@
         display: flex;
         justify-content: left;
         align-items: flex-start;
+        margin-top: 5px;
     }
     .film-poster {
         background-color: #222222;
@@ -77,19 +78,24 @@
         font-size: 13pt;
         margin: 0 0 0 5px;
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         overflow-x: auto;
+    }
+    .additional-film-info-item {
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 10px;
     }
     .info-key {
         margin-right: 15px;
-        min-width: 100px;
+        min-width: 150px;
     }
     .label {
         color: #a4a4a4;
-        margin: 6px 0;
+        margin: 0;
     }
     .value {
-        margin: 6px 0;
+        margin: 0;
     }
 
 </style>
@@ -103,23 +109,15 @@
     </div>
     <hr>
     <div class="container-content">
+        <p class="film-title">${session.film.title}</p>
         <div class="film-container">
             <div class="film-poster">
                 <img class="poster-img" src="${session.film.posterUrl}">
             </div>
             <div class="film-info">
-                <p class="film-title">${session.film.title}</p>
                 <div class="additional-film-info">
-                    <div class="info-key">
-                        <p class="label">Description</p>
-                        <p class="label">Year of release</p>
-                        <p class="label">Duration</p>
-                        <p class="label">Age restriction</p>
-                        <p class="label">Hall ID</p>
-                        <p class="label">Seats count</p>
-                        <p class="label">Session start</p>
-                    </div>
-                    <div class="info-value">
+                    <div class="additional-film-info-item">
+                        <p class="info-key label">Description</p>
                         <p class="value">
                             <#if session.film.description?has_content>
                                 ${session.film.description}
@@ -127,12 +125,31 @@
                                 -
                             </#if>
                         </p>
+                    </div>
+
+                    <div class="additional-film-info-item">
+                        <p class="info-key label">Year of release</p>
                         <p class="value">${session.film.yearOfRelease}</p>
+                    </div>
+                    <div class="additional-film-info-item">
+                        <p class="info-key label">Duration</p>
                         <p class="value">${session.film.duration}</p>
+                    </div>
+                    <div class="additional-film-info-item">
+                        <p class="info-key label">Age restriction</p>
                         <p class="value">${session.film.ageRestrictions}+</p>
+                    </div>
+                    <div class="additional-film-info-item">
+                        <p class="info-key label">Hall ID</p>
                         <p class="value">${session.hall.id}</p>
+                    </div>
+                    <div class="additional-film-info-item">
+                        <p class="info-key label">Seats count</p>
                         <p class="value">${session.hall.seatsCount}</p>
-                        <p class="value">${(session.sessionDateTimeFrom).format('dd.MM.yyyy HH:mm')}</p>
+                    </div>
+                    <div class="additional-film-info-item">
+                        <p class="info-key label">Session start</p>
+                        <p class="value">${(session.sessionDateTimeFrom).format('HH:mm dd.MM.yyyy')}</p>
                     </div>
                 </div>
             </div>

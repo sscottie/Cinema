@@ -5,7 +5,7 @@
 </head>
 <style>
     body {
-        height: 100vh;
+        height: 100%;
         font-family: Verdana, sans-serif;
         margin: 0;
     }

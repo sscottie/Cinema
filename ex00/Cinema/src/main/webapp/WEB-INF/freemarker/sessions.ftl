@@ -5,7 +5,7 @@
 </head>
 <style>
     body {
-        height: 100vh;
+        height: 100%;
         font-family: Verdana, sans-serif;
         margin: 0;
     }
@@ -178,8 +178,8 @@
                                 <p style="margin: 0 0 0 5px;">${session.film.title} (${session.film.ageRestrictions}+)</p>
                             </div>
                         </td>
-                        <td>${session.sessionDateTimeFrom}</td>
-                        <td>${session.sessionDateTimeTo}</td>
+                        <td>${session.sessionDateTimeFrom.format('HH:mm dd.MM.yyyy')}</td>
+                        <td>${session.sessionDateTimeTo.format('HH:mm dd.MM.yyyy')}</td>
                         <td>${session.ticketCost}</td>
                     </tr>
                 </#list>

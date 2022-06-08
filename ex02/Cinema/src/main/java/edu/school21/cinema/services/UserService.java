@@ -63,7 +63,9 @@ public class UserService {
             user = new User();
             userRepository.save(user);
 
-			response.addCookie(new Cookie("userId", String.valueOf(user.getId())));
+            Cookie cookie = new Cookie("userId", String.valueOf(user.getId()));
+            cookie.setPath("/films");
+			response.addCookie(cookie);
         } else {
             user = userRepository.findUserById(userId);
             if (user == null) {
